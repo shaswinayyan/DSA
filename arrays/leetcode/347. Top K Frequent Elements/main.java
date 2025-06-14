@@ -24,17 +24,17 @@ public class main {
         int[] res =new int[k];
         int index=0;
 
-        for(int i=freq.length-1; i>0 && index<k ; i++){
-            for(int n: freq[i]){
-                res[index++]= n;
-                if(index==k){
-                    // return res;
-                    System.out.println(res);
+        for (int i = freq.length - 1; i > 0 && index < k; i--) {
+            for (int n : freq[i]) {
+                if (index < k) {
+                    res[index++] = n;
+                } else {
+                    break;
                 }
             }
         }
         // return res;
-        System.out.println(res);
+        System.out.println(Arrays.toString(res));
 
 
     }
