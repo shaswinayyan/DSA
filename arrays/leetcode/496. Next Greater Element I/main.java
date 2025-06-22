@@ -13,18 +13,16 @@ public class main {
             numsHash.put(nums1[i],i);   
         }
         //a Hashmap to store the integers and their index
-        for(int i=0; i<nums2.length;i++){
-            if(!numsHash.containsKey(nums2[i])){
-                continue;
+        Stack<Integer> stack = new Stack<>();
+        for(int i=0; i<nums2.length; i++){
+            while(!stack.isEmpty() && nums2[i]>stack.peek()){
+                res[numsHash.get(stack.pop())] = nums2[i];
+                
             }
-            for(int j=i+1; j<nums2.length; j++){
-                if(nums2[j]> nums2[i]){
-                    res[numsHash.get(nums2[i])]= nums2[j];
-                    break;
-                }
+            if(numsHash.containsKey(nums2[i])){
+                stack.push(nums2[i]);
             }
         }
-
 
         System.out.println(Arrays.toString(res));
     }
