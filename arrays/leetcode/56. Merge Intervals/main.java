@@ -12,20 +12,18 @@ public class main {
         });
         List<List<Integer>> resultList = new ArrayList<>();
 
-        for(int i=0; i<intervals.length;i++){
-            int start = intervals[i][0];
-            int end = intervals[i][1];
-            if(!resultList.isEmpty() && end <= resultList.get(resultList.size()-1).get(1)){
-                continue;
+        for (int i = 0; i < intervals.length; i++) {
+            // if the current interval does not
+            // lie in the last interval:
+            if (resultList.isEmpty() || intervals[i][0] > resultList.get(resultList.size() - 1).get(1)) {
+                resultList.add(Arrays.asList(intervals[i][0], intervals[i][1]));
             }
-            for(int j=i+1; j<intervals.length; j++){
-                if(intervals[j][0]<= end){
-                    end = Math.max(end,intervals[j][1]);
-                }else{
-                    break;
-                }
+            // if the current interval
+            // lies in the last interval:
+            else {
+                resultList.get(resultList.size() - 1).set(1,
+                                            Math.max(resultList.get(resultList.size() - 1).get(1), intervals[i][1]));
             }
-            resultList.add(Arrays.asList(start,end));
         }
         
         System.out.println(resultList);
