@@ -1,7 +1,7 @@
 public class main {
     public static void main(String[] args) {
         private int[] map;
-
+            //brute force solution
         public MyHashMap() {
             map = new int[1000001];
             Arrays.fill(map, -1);
